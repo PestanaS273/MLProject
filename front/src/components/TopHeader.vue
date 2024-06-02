@@ -29,10 +29,10 @@
                     <component :is="item.icon" class="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                   </div>
                   <div class="flex-auto">
-                    <a :href="item.href" class="block font-semibold text-gray-900">
+                    <RouterLink :to="item.href" class="block font-semibold text-gray-900">
                       {{ item.name }}
                       <span class="absolute inset-0" />
-                    </a>
+                    </RouterLink>
                     <p class="mt-1 text-gray-600">{{ item.description }}</p>
                   </div>
                 </div>
@@ -122,8 +122,8 @@ import {
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/vue/20/solid'
 
 const products = [
-  { name: 'Create New Space', description: 'Create a new space for a new lesson', href: '#', icon: ChartPieIcon },
-  { name: 'Ask Questions', description: 'Ask specific question of your topic', href: '#', icon: CursorArrowRaysIcon },
+  { name: 'Create New Space', description: 'Create a new space for a new lesson', href: '/newspace', icon: ChartPieIcon },
+  { name: 'Ask Questions', description: 'Ask specific question of your topic', href: '/newspace', icon: CursorArrowRaysIcon },
   { name: 'Problem Solving', description: 'Hard to solve a problem? Ask for help to do it!', href: '#', icon: FingerPrintIcon },
   { name: 'How To Study', description: 'Don\'t know the best way to learn that lesson? Find it!', href: '#', icon: SquaresPlusIcon },
   { name: 'Summarize', description: 'Lot of pages to read and do not want to miss anything?', href: '#', icon: ArrowPathIcon },

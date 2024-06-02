@@ -27,6 +27,19 @@ const router = createRouter({
       name: 'login',
       component: () => import('../views/LoginView.vue')
     },
+    {
+      path: '/newspace',
+      name: 'newspace',
+      component: () => import('../views/LogedinPages/NewSpaceView.vue')
+    },
+
+    {
+      path: '/newsassistant/:query',
+      name: 'newsassistant',
+      component: () => import('../views/LogedinPages/NewAssistantView.vue'),
+      props: true
+    },
+
     // {
     //   path: '/dashboard',
     //   name: 'dashboard',
