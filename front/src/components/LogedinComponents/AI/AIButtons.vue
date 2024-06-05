@@ -1,9 +1,11 @@
 <template>
+    <div class="flex justify-center min-h-screen mt-32">
     <div class="space-x-4">
         <button class="bg-purple-500 hover:bg-purple-500 text-white font-bold py-2 px-4 border border-purple-500 rounded" @click="fetchMostImportantNews">Most Important News</button>
         <button class="bg-purple-500 hover:bg-purple-500 text-white font-bold py-2 px-4 border border-purple-500 rounded" @click="summarizeLastMonthsNews">Summarize Last Month's News</button>
         <button class="bg-purple-500 hover:bg-purple-500 text-white font-bold py-2 px-4 border border-purple-500 rounded" @click="createArticle">Create an Article</button>
         <button class="bg-purple-500 hover:bg-purple-500 text-white font-bold py-2 px-4 border border-purple-500 rounded" @click="fetchImpacts">Which Impacts Does It Have?</button>
+    </div>
     </div>
 </template>
 
