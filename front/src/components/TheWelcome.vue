@@ -10,8 +10,6 @@ import LandingPage from './LandingPage.vue'
 
     <LandingPage />
 
-
-
 </template>
 
 

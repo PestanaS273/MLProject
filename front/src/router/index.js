@@ -40,6 +40,13 @@ const router = createRouter({
       props: true
     },
 
+    {
+      path: '/newsanalyse',
+      name: 'newsanalyse',
+      component: () => import('../views/LogedinPages/NewsAnalyseView.vue'),
+      props: true
+    }
+
     // {
     //   path: '/dashboard',
     //   name: 'dashboard',
