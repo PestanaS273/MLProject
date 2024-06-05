@@ -5,8 +5,12 @@ import Chat from '@/components/Chat.vue';
 </script>
 
 <template>
-    <TopHeader />
-    <Chat />  
+
+    <TopHeader/>
+
+    <Chat/>
+
+
 </template>
 
 <style scoped>
