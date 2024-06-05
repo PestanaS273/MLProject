@@ -7,6 +7,10 @@ import AIButtons from '@/components/LogedinComponents/AI/AIButtons.vue';
 
     <TopHeader/>
 
+    <AIPerplexity/>
+
+    
+
     <AIButtons/>
 
 
