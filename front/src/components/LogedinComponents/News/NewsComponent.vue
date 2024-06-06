@@ -57,7 +57,7 @@ export default {
   methods: {
     async fetchNews() {
       try {
-        const response = await fetch(`https://newsapi.org/v2/everything?q=${this.searchQuery}&sortBy=popularity&apiKey=fd7f7721de6249198d8a9fa730eb6447`)
+        const response = await fetch(`https://newsapi.org/v2/everything?q=${this.searchQuery}&sources:'bbc-news'&sortBy=popularity&apiKey=fd7f7721de6249198d8a9fa730eb6447`)
         const data = await response.json()
         this.posts = data.articles
         console.log(this.posts)
