@@ -123,7 +123,7 @@ import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/vue/20/so
 
 const products = [
   { name: 'Create New Space', description: 'Create a new space for a new lesson', href: '/newspace', icon: ChartPieIcon },
-  { name: 'Ask Questions', description: 'Ask specific question of your topic', href: '/newspace', icon: CursorArrowRaysIcon },
+  { name: 'Ask Questions', description: 'Ask specific question of your topic', href: '/askquestions', icon: CursorArrowRaysIcon },
   { name: 'Problem Solving', description: 'Hard to solve a problem? Ask for help to do it!', href: '#', icon: FingerPrintIcon },
   { name: 'How To Study', description: 'Don\'t know the best way to learn that lesson? Find it!', href: '#', icon: SquaresPlusIcon },
   { name: 'Summarize', description: 'Lot of pages to read and do not want to miss anything?', href: '#', icon: ArrowPathIcon },

@@ -39,7 +39,6 @@
       return {
         messages: [],
         inputMessage: '',
-        API_KEY: 'sk-proj-LwLhAsIoDFVpjKfQCylaT3BlbkFJwqAoJHwS1BaD0pl7AdF7' 
       };
     },
     methods: {

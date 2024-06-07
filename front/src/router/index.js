@@ -45,6 +45,11 @@ const router = createRouter({
       name: 'newsanalyse',
       component: () => import('../views/LogedinPages/NewsAnalyseView.vue'),
       props: true
+    },
+    {
+      path: '/askquestions',
+      name: 'askquestions',
+      component: () => import('../views/LogedinPages/AskQuestionsView.vue'),
     }
 
     // {
