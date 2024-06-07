@@ -1,13 +1,13 @@
 <template>
   <div class="bg-white py-24 sm:py-32">
     <button @click="goToAssistant" class="absolute top-50 right-0 m-4 px-4 py-2 text-white bg-gradient-to-r from-purple-500 to-purple-600 rounded hover:from-purple-600 hover:to-purple-700 animate-pulse border border-purple-500">
-      Analyse with AI  {{ searchQuery }}
+      Custom Analyse 
     </button>
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:mx-0 flex justify-between items-center">
         <div>
           <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Look for some News!</h2>
-          <p class="mt-2 text-lg leading-8 text-gray-600">Want to analyse some specific information?</p>
+          <p class="mt-2 text-lg leading-8 text-gray-600">Click on a News To Analyse It with AI!</p>
         </div>
         <div class="flex items-center">
           <input v-model="searchQuery" class="border border-gray-300 rounded-lg p-2 mr-2" type="text" placeholder="Search news...">
@@ -59,7 +59,8 @@ export default {
       try {
         const response = await fetch(`https://newsapi.org/v2/everything?q=${this.searchQuery}&sources:'bbc-news'&sortBy=popularity&apiKey=fd7f7721de6249198d8a9fa730eb6447`)
         const data = await response.json()
-        this.posts = data.articles
+        this.posts = data.articles.filter(post => post.author !== null)
+
         console.log(this.posts)
       } catch (error) {
         console.error(error)

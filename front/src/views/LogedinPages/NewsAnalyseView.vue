@@ -9,6 +9,8 @@ import AIPerplexity from '@/components/LogedinComponents/AI/AIPerplexity.vue';
         <TopHeader class="order-1 "/>
 
         <AIPerplexity class="order-2"/>
+
+        
     </div>
 
 </template>

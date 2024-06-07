@@ -1,14 +1,19 @@
 <script setup>
+import store from '@/store';
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/vue/20/solid'
 </script>
 <template>
     <div class="flex justify-center mt-4 mx-4">
       <div class="max-w-2xl p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <a href="#">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">News analysis for {{ getNews }}</h5>
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">News analysis for : </h5>
         </a>
-        <p class="mb-3 my-2 font-normal text-gray-700 dark:text-gray-400">Get more realted information?</p>
-        <a href="#" @click.prevent="fetchNews" class="inline-flex items-center px-3 my-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <br>
+        <h4 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ getNews }}</h4>
+        <p class="mb-3 my-2 font-normal text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-purple-600">
+            Let AI make a quick search for more information!
+        </p>        
+        <a href="#" @click.prevent="fetchNews" class="inline-flex items-center px-3 my-3 py-2 text-white bg-gradient-to-r from-purple-500 to-purple-600 rounded hover:from-purple-600 hover:to-purple-700 animate-pulse border border-purple-500">
             Click here
           <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -22,9 +27,10 @@ import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/vue/20/
             <span class="sr-only">Loading...</span>
         </div>
         <br><br>
-        <div v-if="AIAnswer">
+        <div v-if="perplexityAnswered">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">AI :</h5>
-            <p class="mb-3 my-5 font-normal text-gray-700 dark:text-gray-400">{{ newsData }}</p>
+            <p class="mb-3 my-5 font-normal text-gray-700 dark:text-gray-400" v-html="formattedNewsData"></p>
+
         </div>
       </div>
     </div>
@@ -39,13 +45,24 @@ import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/vue/20/
       return {
         loading: false,
         newsData: null,
-        AIAnswer: null,
+        perplexityAnswered: null,
       }
     },
     computed: {
       ...mapGetters([
         'getNews'
-      ])
+      ]),
+      formattedNewsData() {
+        let formattedData = this.newsData;
+
+        // Replace **text** with <strong>text</strong>
+        formattedData = formattedData.replace(/\*\*(.*?)\*\*/g, '<br><br><strong>$1</strong>');
+
+        // Replace 1. text with <li>text</li>
+
+
+        return formattedData;
+        },
     },
     methods: {
       async fetchNews() {
@@ -72,7 +89,9 @@ import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/vue/20/
           this.newsData = data.choices[0].message.content
           console.log(data)
           this.loading = false;
-          this.AIAnswer = true;
+          this.perplexityAnswered = true;
+          this.$store.commit('setAnswerPerplexity', this.newsData)
+          this.$store.commit('setPerplexityAnswered', true)
         } catch (error) {
           console.error(error)
           this.loading = false;

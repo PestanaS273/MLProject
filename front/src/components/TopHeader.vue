@@ -48,7 +48,7 @@
         </Popover>
 
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
-        <RouterLink to="pricing/" class="text-sm font-semibold leading-6 text-gray-900">Pricing</RouterLink>
+        <RouterLink to="/pricing" class="text-sm font-semibold leading-6 text-gray-900">Pricing</RouterLink>
 
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Company</a>
       </PopoverGroup>

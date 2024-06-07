@@ -1,5 +1,5 @@
 <template>
-    <div class="chat-container">
+    <div class="chat-container" >
       <div class="messages">
         <div v-for="(message, index) in messages" :key="index" :class="{'user-message': message.user, 'bot-message': !message.user}">
           <div class="flex items-start gap-2.5" :style="{ flexDirection: message.user ? 'row-reverse' : 'row' }">
@@ -19,7 +19,20 @@
   </template>
   
   <script>
+  
   import axios from 'axios';
+  import'dotenv/config';
+  import OpenAI from 'openai';
+
+  const apiKey = process.env.OPENAI_API_KEY;
+
+  
+  const openai = newOpenAI({
+  apiKey: apiKey,
+
+  });
+
+
   
   export default {
     data() {
@@ -74,7 +87,7 @@
   };
   </script>
   
-  <style>
+  <style scoped>
   .chat-container {
     max-width: 800px;
     margin-left: 270px;
