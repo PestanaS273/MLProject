@@ -17,7 +17,7 @@
     "dotenv": "^16.4.5",
     "newsapi": "^2.4.1",
     "node_perplexityai": "^1.0.4",
-    "openai": "^4.0.0",
+    "openai": "^4.49.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
     "vuex": "^4.0.2",
