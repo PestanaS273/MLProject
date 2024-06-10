@@ -12,6 +12,7 @@ export default createStore({
         answerPerplexity: null, //text
         perplexityAnswered: false, //Boolean
         answerPerplexityFormated: null,
+        
 
 
     },
@@ -105,6 +106,6 @@ export default createStore({
 
     },
     plugins: [createPersitedState({
-        paths: ['user', 'token', 'isLogged', 'queryPerplexity', 'setNews', 'answerPerplexity', 'perplexityAnswered', 'answerPerplexityFormated']
+        paths: ['user', 'token', 'isLogged', 'queryPerplexity', 'setNews', 'answerPerplexity', 'answerPerplexityFormated']
     })]
 })

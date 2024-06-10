@@ -1,15 +1,21 @@
 <script setup>
 import { ref } from 'vue';
+
+
 import TopHeader from '@/components/TopHeader.vue';
 import AIPerplexity from '@/components/LogedinComponents/AI/AIPerplexity.vue';
 import AnalyseImpacts from '@/components/LogedinComponents/AI/AnalyseImpacts.vue';
 import CreateArticle from '@/components/LogedinComponents/AI/CreateArticle.vue';
 import SummarizeInfo from '@/components/LogedinComponents/AI/SummarizeInfo.vue';
 
+
+
+
 const slides = ref([]);
 
-const addSlide = (content) => {
-  slides.value.push(content);
+
+const addSlide = (slide) => {
+  slides.value.push(slide);
 };
 
 </script>
@@ -21,7 +27,16 @@ const addSlide = (content) => {
         
 
         <AIPerplexity class="order-2"/>
-        <div class="order-3 my-5">
+
+
+        <div v-if="perplexityAnswered" class="order-3 flex justify-center mt-3 my-4 mx-4 ">
+            <AnalyseImpacts @assistant-created="addSlide" />
+            <CreateArticle @assistant-created="addSlide" />
+            <SummarizeInfo @assistant-created="addSlide" />
+        </div>
+
+
+        <div class="order-4 my-5" v-if="slides.length > 0">
             <swiper 
             :slidesPerView="'auto'"
             :centeredSlides="true"
@@ -31,17 +46,14 @@ const addSlide = (content) => {
             class="mySwiper">
                 <swiper-slide v-for="(slide, index) in slides">  
                     <div class="w-4/5 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                        {{ slide }}
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Chat GPT : {{ slide.title }}</h5>
+                        <p class="mb-3 my-5 font-normal text-gray-700 dark:text-gray-400" v-html="slide.content"></p>
                     </div>
                 </swiper-slide>
             </swiper>
         </div>
         
-        <div v-if="perplexityAnswered" class="order-4 flex justify-center mt-3 my-4 mx-4 ">
-            <AnalyseImpacts @click="addSlide('Analyse Impacts content')" />
-            <CreateArticle @click="addSlide('Create Article content')" />
-            <SummarizeInfo @click="addSlide('Summarize Info content')" />
-        </div>
+        
 
 
         <div >
@@ -60,11 +72,12 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+import OpenAI from 'openai';
 
-
-
-
-
+const openai = new OpenAI({
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true,
+});
 
 export default {
     components: {
@@ -73,9 +86,8 @@ export default {
     },
     data() {
         return {
-            perplexityAnswered: this.getPerplexityAnswered,
-            getAnswerPerplexityFormated: this.getAnswerPerplexityFormated,
-
+            perplexityAnswered: false,
+            slides: [],
         }
     },
     setup() {
@@ -85,12 +97,10 @@ export default {
     },
 
     watch: {
-        getPerplexityAnswered() {
-            this.perplexityAnswered = this.getPerplexityAnswered;
+        getPerplexityAnswered(newVal) {
+            this.perplexityAnswered = newVal;
         },
-        getAnswerPerplexityFormated() {
-            this.getAnswerPerplexityFormated = this.getAnswerPerplexityFormated;
-        }
+
     },
     
 
