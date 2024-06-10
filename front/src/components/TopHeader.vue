@@ -1,12 +1,12 @@
 
 <template>
-  <header class=" absolute inset-x-0 top-0 z-50">
+  <header class=" relative inset-x-0 top-0 z-50">
     <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
       <div class="flex lg:flex-1">
-        <a href="#" class="-m-1.5 p-1.5">
+        <RouterLink to="/" class="-m-1.5 p-1.5">
           <span class="sr-only">Your Company</span>
           <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
-        </a>
+        </RouterLink>
       </div>
       <div class="flex lg:hidden">
         <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = true">
@@ -48,7 +48,7 @@
         </Popover>
 
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
-        <RouterLink to="pricing/" class="text-sm font-semibold leading-6 text-gray-900">Pricing</RouterLink>
+        <RouterLink to="/pricing" class="text-sm font-semibold leading-6 text-gray-900">Pricing</RouterLink>
 
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Company</a>
       </PopoverGroup>
@@ -123,7 +123,7 @@ import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/vue/20/so
 
 const products = [
   { name: 'Create New Space', description: 'Create a new space for a new lesson', href: '/newspace', icon: ChartPieIcon },
-  { name: 'Ask Questions', description: 'Ask specific question of your topic', href: '/newspace', icon: CursorArrowRaysIcon },
+  { name: 'Ask Questions', description: 'Ask specific question of your topic', href: '/askquestions', icon: CursorArrowRaysIcon },
   { name: 'Problem Solving', description: 'Hard to solve a problem? Ask for help to do it!', href: '#', icon: FingerPrintIcon },
   { name: 'How To Study', description: 'Don\'t know the best way to learn that lesson? Find it!', href: '#', icon: SquaresPlusIcon },
   { name: 'Summarize', description: 'Lot of pages to read and do not want to miss anything?', href: '#', icon: ArrowPathIcon },
