@@ -1,8 +1,5 @@
 <template>
   <div class="bg-white py-24 sm:py-32">
-    <button @click="goToAssistant" class="absolute top-50 right-0 m-4 px-4 py-2 text-white bg-gradient-to-r from-purple-500 to-purple-600 rounded hover:from-purple-600 hover:to-purple-700 animate-pulse border border-purple-500">
-      Custom Analyse 
-    </button>
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="mx-auto max-w-2xl lg:mx-0 flex justify-between items-center">
         <div>
@@ -68,9 +65,6 @@ export default {
     },
     loadMore() {
       this.postsToDisplay += 20;
-    },
-    goToAssistant() {
-      this.$router.push(`/newsassistant/${this.searchQuery}`);
     },
     setNews(description) {
       this.$store.commit('setNews', description);
