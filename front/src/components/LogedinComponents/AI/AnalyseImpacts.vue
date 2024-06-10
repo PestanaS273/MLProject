@@ -1,9 +1,15 @@
 <template>
-    <div>
+    <div >
         <button class="bg-purple-500 hover:bg-purple-500 text-white font-bold py-2 px-4 border border-purple-500 rounded" @click="fetchImpacts">Which Impacts Does It Have?</button>
     </div>
 </template>
 
 <script>
+
+
+
+export default {
+
+}
 
 </script>

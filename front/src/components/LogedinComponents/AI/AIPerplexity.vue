@@ -1,6 +1,5 @@
 <script setup>
-import store from '@/store';
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/vue/20/solid'
+
 </script>
 <template>
     <div class="flex justify-center mt-4 mx-4">
@@ -12,13 +11,15 @@ import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/vue/20/
         <h4 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ getNews }}</h4>
         <p class="mb-3 my-2 font-normal text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-purple-600">
             Let AI make a quick search for more information!
-        </p>        
-        <a href="#" @click.prevent="fetchNews" class="inline-flex items-center px-3 my-3 py-2 text-white bg-gradient-to-r from-purple-500 to-purple-600 rounded hover:from-purple-600 hover:to-purple-700 animate-pulse border border-purple-500">
-            Click here
-          <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-          </svg>
-        </a>
+        </p>
+        <div v-if="!perplexityAnswered">
+          <a href="#" @click.prevent="fetchNews" class="inline-flex items-center px-3 my-3 py-2 text-white bg-gradient-to-r from-purple-500 to-purple-600 rounded hover:from-purple-600 hover:to-purple-700 animate-pulse border border-purple-500">
+              Click here
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+          </a>
+        </div>
         <div v-if="loading" role="status">
             <svg aria-hidden="true" class="w-10 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
@@ -58,7 +59,7 @@ import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/vue/20/
         // Replace **text** with <strong>text</strong>
         formattedData = formattedData.replace(/\*\*(.*?)\*\*/g, '<br><br><strong>$1</strong>');
 
-        // Replace 1. text with <li>text</li>
+        this.$store.commit('setAnswerPerplexityFormated', formattedData)
 
 
         return formattedData;

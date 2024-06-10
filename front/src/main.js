@@ -7,8 +7,6 @@ import store from './store'
 
 const app = createApp(App)
 
-
-
 app.use(router)
 app.use(store)
 

@@ -11,6 +11,7 @@ export default createStore({
         setNews: null,
         answerPerplexity: null, //text
         perplexityAnswered: false, //Boolean
+        answerPerplexityFormated: null,
 
 
     },
@@ -35,6 +36,9 @@ export default createStore({
         },
         getPerplexityAnswered: state => {
             return state.perplexityAnswered;
+        },
+        getAnswerPerplexityFormated: state => {
+            return state.answerPerplexityFormated;
         }
 
     },
@@ -66,6 +70,10 @@ export default createStore({
         setPerplexityAnswered(state, perplexityAnswered) {
             console.log(perplexityAnswered);
             state.perplexityAnswered = perplexityAnswered;
+        },
+        setAnswerPerplexityFormated(state, answerPerplexityFormated) {
+            console.log(answerPerplexityFormated);
+            state.answerPerplexityFormated = answerPerplexityFormated;
         }
 
     },
@@ -90,10 +98,13 @@ export default createStore({
         },
         setPerplexityAnswered(context, perplexityAnswered) {
             context.commit('setPerplexityAnswered', perplexityAnswered);
+        },
+        setAnswerPerplexityFormated(context, answerPerplexityFormated) {
+            context.commit('setAnswerPerplexityFormated', answerPerplexityFormated);
         }
 
     },
     plugins: [createPersitedState({
-        paths: ['user', 'token', 'isLogged', 'queryPerplexity', 'setNews', 'answerPerplexity']
+        paths: ['user', 'token', 'isLogged', 'queryPerplexity', 'setNews', 'answerPerplexity', 'perplexityAnswered', 'answerPerplexityFormated']
     })]
 })
