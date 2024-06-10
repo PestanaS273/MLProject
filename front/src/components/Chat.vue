@@ -5,6 +5,7 @@
       <div class="flex items-center ml-3">
         <input v-model="searchQuery" class="border border-gray-300 rounded-lg p-1 text-sm mr-2" type="text" placeholder="Type here ...">
         <button @click="fetchRole" class="px-2 py-1 text-sm text-white bg-blue-500 rounded hover:bg-blue-600">Set Role</button>
+        <div v-if="popupVisible" class="popup">Role Set!</div>
       </div>
     </div>
 
@@ -44,6 +45,7 @@ export default {
       userRole: '',
       messages: [],
       inputMessage: '',
+      popupVisible: false,
     };
   },
   methods: {
@@ -54,6 +56,10 @@ export default {
     fetchRole() {
       this.userRole = this.searchQuery;
       console.log('User role:', this.userRole);
+      this.popupVisible = true;
+      setTimeout(() => {
+        this.popupVisible = false;
+      }, 1500);
     },
     async sendMessage() {
       if (!this.inputMessage.trim()) return;
@@ -124,6 +130,15 @@ input {
 button {
   padding: 10px;
 }
+.popup {
+    transition: opacity 0.5s;
+    opacity: 0;
+    margin-left: 5px;
+  }
+  
+  .popup {
+    opacity: 1;
+  }
 
 </style>
 
