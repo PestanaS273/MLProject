@@ -38,26 +38,19 @@ const addSlide = (slide) => {
 
         <div class="order-4 my-5" v-if="slides.length > 0">
             <swiper 
-            :slidesPerView="'auto'"
+            :slidesPerView="2"
             :centeredSlides="true"
-            :navigation="true" 
+            :pagination="true"
             :spaceBetween="30"
             :modules="modules" 
             class="mySwiper">
                 <swiper-slide v-for="(slide, index) in slides">  
-                    <div class="w-4/5 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <div class=" p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Chat GPT : {{ slide.title }}</h5>
                         <p class="mb-3 my-5 font-normal text-gray-700 dark:text-gray-400" v-html="slide.content"></p>
                     </div>
                 </swiper-slide>
             </swiper>
-        </div>
-        
-        
-
-
-        <div >
-            
         </div>
         
     </div>
@@ -126,14 +119,11 @@ export default {
     margin-top: 20px; 
 }
 
-.swiper {
-  width: 100%;
-  height: 100%;
-}
+
 
 .swiper-slide {
   text-align: center;
-  font-size: 18px;
+
   background: #fff;
 
   /* Center slide text vertically */
@@ -142,12 +132,6 @@ export default {
   align-items: center;
 }
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
 </style>
 
