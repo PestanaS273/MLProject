@@ -4,7 +4,7 @@
       <h2 class="text-2xl font-bold tracking-tight text-gray-900">Ask an expert in</h2>
       <div class="flex items-center ml-3">
         <input v-model="searchQuery" class="border border-gray-300 rounded-lg p-1 text-sm mr-2" type="text" placeholder="Type here ...">
-        <button @click="fetchRole" class="px-2 py-1 text-sm text-white bg-blue-500 rounded hover:bg-blue-600">Search</button>
+        <button @click="fetchRole" class="px-2 py-1 text-sm text-white bg-blue-500 rounded hover:bg-blue-600">Set Role</button>
       </div>
     </div>
 
@@ -23,6 +23,7 @@
     </div>
     <div class="flex items-center mt-4">
       <input v-model="inputMessage" @keyup.enter="sendMessage" class="border border-gray-300 rounded-lg p-1 text-sm w-full mr-2" placeholder="Type a message..." />
+      
       <button @click="sendMessage" class="px-2 py-1 text-sm text-white bg-blue-500 rounded hover:bg-blue-600">Send</button>
     </div>
   </div>
@@ -122,11 +123,8 @@ input {
 }
 button {
   padding: 10px;
-  background-color: rgb(234, 233, 233);
 }
-button:hover {
-  background-color: lightgray;
-}
+
 </style>
 
 
