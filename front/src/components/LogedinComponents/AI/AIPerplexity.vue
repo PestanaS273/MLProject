@@ -73,7 +73,7 @@
           headers: {
             accept: 'application/json',
             'content-type': 'application/json',
-            authorization: 'Bearer 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'
+            authorization: 'Bearer ' + import.meta.env.VITE_PERPLEXITY_API_KEY
           },
           body: JSON.stringify({
             model: 'llama-3-sonar-small-32k-online',
